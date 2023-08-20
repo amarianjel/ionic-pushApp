@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PushService } from '../services/push.service';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +9,26 @@ import { PushService } from '../services/push.service';
 })
 export class HomePage {
 
-  constructor( private pushService: PushService ) {
-    this.pushService.OneSignilInit();
-    console.log("first")
+  mensajes: [] = [];
+  userId = '';
+
+  constructor() {}
+
+  
+  async ionViewWillEnter() {
+
+    console.log('Will Enter - Cargar mensajes');
+    // this.userId = await this.pushService.getUserIdOneSignal();
+
+    // this.mensajes = await this.pushService.getMensajes();
+
+  }
+
+  async borrarMensajes() {
+    // await this.pushService.borrarMensajes();
+    this.mensajes = [];
+
+    console.log(this.mensajes);
   }
 
 }

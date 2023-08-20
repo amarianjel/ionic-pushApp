@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import OneSignal from 'onesignal-cordova-plugin';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +9,9 @@ export class PushService {
 
   constructor() { }
 
-  OneSignilInit(){
+  /*async configuracionInicial(){
     //OneSignal.setLogLevel(6, 0);    
-    OneSignal.setAppId('497bb354-c0cf-432b-82ac-eba4361c4f56');    
+    OneSignal.setAppId( environment.oneSignalAppId );    
     OneSignal.setNotificationOpenedHandler( jsonData => {        
       console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
     });     
@@ -20,5 +21,5 @@ export class PushService {
     OneSignal.getDeviceState( resp => {      
     //this.storage.set('push_id', resp.userId);    
     });  
-  }
+  }*/
 }
