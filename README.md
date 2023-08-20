@@ -18,7 +18,11 @@
 # Plugins
 
 ## Codova
-Realizar un push y serciosarse de los pasos en la [Documentación para One Signal y generar un push](https://onesignal.com/videos/add-push-notifications-to-ionic-react-apps-with-onesignal)
+
+### One Signal
+La [documentación de One Signal](https://documentation.onesignal.com/docs/ionic-sdk-setup) solo es importante en los pasos a seguir, para realizar el código es importante ver el video del push a continuación.
+Realizar un push y serciosarse de los pasos en la [Documentación para One Signal y generar un push](https://onesignal.com/videos/add-push-notifications-to-ionic-react-apps-with-onesignal).
+Los mensajes se envian desde el [perfil](https://dashboard.onesignal.com/apps/497bb354-c0cf-432b-82ac-eba4361c4f56/notifications/0b7d9ed6-7351-4a3a-b4b9-7ca017349fcf#outcomes=os__click__count) y debe siempre estar conectado el celular con internet para estar subscrito.
 
 ```npm install onesignal-cordova-plugin```
 ```npx cap sync```
