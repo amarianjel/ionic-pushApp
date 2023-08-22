@@ -7,6 +7,16 @@ import { environment } from 'src/environments/environment';
 })
 export class PushService {
 
+  mensajes: any[] = [
+    {
+      title: 'Titulo de la push',
+      body: 'Este es el body de la push',
+      date: new Date()
+    }
+  ];
+
+  userId: string | any;
+
   constructor() { }
 
   async configuracionInicial(){
@@ -25,4 +35,5 @@ export class PushService {
     //this.storage.set('push_id', resp.userId); 
     });  
   }
+  
 }

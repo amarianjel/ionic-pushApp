@@ -27,6 +27,8 @@ Los mensajes se envian desde el [perfil](https://dashboard.onesignal.com/apps/49
 ```npm install onesignal-cordova-plugin```
 ```npx cap sync```
 
+*Recordar que la implementación de la configuración debe estar en **app.component.ts**, sino representará errores*
+
 ## Capacitor
 
 # Capacitor

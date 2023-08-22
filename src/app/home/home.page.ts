@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { PushService } from '../services/push.service';
-import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +11,7 @@ export class HomePage {
   mensajes: [] = [];
   userId = '';
 
-  constructor() {}
+  constructor( public pushService: PushService ) {}
 
   
   async ionViewWillEnter() {
