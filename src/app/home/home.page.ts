@@ -22,18 +22,15 @@ export class HomePage implements OnInit{
 
   
   async ionViewWillEnter() {
-
     console.log('Will Enter - Cargar mensajes');
-    //this.userId = await this.pushService.getUserIdOneSignal();
-
+    this.userId = await this.pushService.getUserIdOneSignal();
     this.mensajes = await this.pushService.getMensajes();
-
+    console.log(this.userId)
   }
 
   async borrarMensajes() {
-    // await this.pushService.borrarMensajes();
+    await this.pushService.borrarMensajes();
     this.mensajes = [];
-
     console.log(this.mensajes);
   }
 

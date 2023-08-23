@@ -18,7 +18,7 @@ export class PushService {
     // }
   ];
 
-  userId: string | any;
+  public userId: string | any;
 
   pushListener = new EventEmitter<any>(); //+ Observable
 
@@ -34,14 +34,14 @@ export class PushService {
       console.log('Notificación abierta: ', accepted); 
     });     
 
-    OneSignal.getDeviceState( resp => {
+    OneSignal.getDeviceState( async resp => {
+      this.userId = resp.userId;
       this.storage.set('push_id', resp.userId);
-      console.log(resp.userId) 
+      console.log(this.userId)
     });
 
     // README: Es cuando se abre la notificación
     OneSignal.setNotificationOpenedHandler( async( jsonData: OpenedEvent ) => {        
-      //console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
       console.log('setNotificationOpenedHandler: ', jsonData)
       await this.notificacionRecibida( jsonData )
     });
@@ -85,5 +85,14 @@ export class PushService {
     return [...this.mensajes];
   }
 
+  async getUserIdOneSignal() {
+    console.log('Cargando userId');
+    return this.userId;
+  }
 
+  async borrarMensajes() {
+    await this.storage.clear();
+    this.mensajes = [];
+    this.guardarMensajes();
+  }
 }
