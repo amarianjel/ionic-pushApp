@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ApplicationRef, Component, OnInit } from '@angular/core';
 import { PushService } from '../services/push.service';
 
 @Component({
@@ -6,20 +6,27 @@ import { PushService } from '../services/push.service';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit{
 
-  mensajes: [] = [];
+  mensajes: any[] = [];
   userId = '';
 
-  constructor( public pushService: PushService ) {}
+  constructor( public pushService: PushService, private applicationRef: ApplicationRef ) {}
+
+  ngOnInit(){
+    this.pushService.pushListener.subscribe( noti => {
+      this.mensajes.unshift( noti );
+      this.applicationRef.tick();
+    });
+  }
 
   
   async ionViewWillEnter() {
 
     console.log('Will Enter - Cargar mensajes');
-    // this.userId = await this.pushService.getUserIdOneSignal();
+    //this.userId = await this.pushService.getUserIdOneSignal();
 
-    // this.mensajes = await this.pushService.getMensajes();
+    this.mensajes = await this.pushService.getMensajes();
 
   }
 
