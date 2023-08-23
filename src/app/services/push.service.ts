@@ -35,9 +35,8 @@ export class PushService {
     });     
 
     OneSignal.getDeviceState( resp => {
-      console.log('DeviceState: ')
-      console.log(resp)      
-    //this.storage.set('push_id', resp.userId); 
+      this.storage.set('push_id', resp.userId);
+      console.log(resp.userId) 
     });
 
     // README: Es cuando se abre la notificación
